@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ClassesModel;
+use App\Models\LessonsModel;
 use PDF;
 
-class ClassesController extends Controller
+class LessonsController extends Controller
 {
     public function __construct() {
-        $this->ClassesModel = new ClassesModel();
+        $this->LessonsModel = new LessonsModel();
     }
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class ClassesController extends Controller
     public function index()
     {
         $data = [
-            'classes' => $this->ClassesModel->allData()
+            'lessons' => $this->LessonsModel->allData()
         ];
-        return view('admin.classes.v_index', $data);
+        return view('admin.lessons.v_index', $data);
     }
 
     /**
@@ -31,7 +31,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        return view('admin.classes.v_add');
+        return view('admin.lessons.v_add');
     }
 
     /**
@@ -50,8 +50,8 @@ class ClassesController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        $this->ClassesModel->addData($data);
-        return redirect()->route('classes')->with('message', 'Successfully added data');
+        $this->LessonsModel->addData($data);
+        return redirect()->route('lessons')->with('message', 'Successfully added data');
     }
 
     /**
@@ -62,13 +62,13 @@ class ClassesController extends Controller
      */
     public function show($id)
     {
-        if(!$this->ClassesModel->detailData($id)) {
+        if(!$this->LessonsModel->detailData($id)) {
             abort(404);
         }
         $data = [
-            'classes' => $this->ClassesModel->detailData($id)
+            'lessons' => $this->LessonsModel->detailData($id)
         ];
-        return view('admin.classes.v_detail', $data);
+        return view('admin.lessons.v_detail', $data);
     }
 
     /**
@@ -79,13 +79,13 @@ class ClassesController extends Controller
      */
     public function edit($id)
     {
-        if(!$this->ClassesModel->detailData($id)) {
+        if(!$this->LessonsModel->detailData($id)) {
             abort(404);
         }
         $data = [
-            'classes' => $this->ClassesModel->detailData($id)
+            'lessons' => $this->LessonsModel->detailData($id)
         ];
-        return view('admin.classes.v_edit', $data);
+        return view('admin.lessons.v_edit', $data);
     }
 
     /**
@@ -104,8 +104,8 @@ class ClassesController extends Controller
             'name' => Request()->name,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        $this->ClassesModel->updateData($id, $data);
-        return redirect()->route('classes')->with('message', 'Successfully changed data');
+        $this->LessonsModel->updateData($id, $data);
+        return redirect()->route('lessons')->with('message', 'Successfully changed data');
     }
 
     /**
@@ -116,8 +116,8 @@ class ClassesController extends Controller
      */
     public function destroy($id)
     {
-        $this->ClassesModel->deleteData($id);
-        return redirect()->route('classes')->with('message', 'Successfully deleted data');   
+        $this->LessonsModel->deleteData($id);
+        return redirect()->route('lessons')->with('message', 'Successfully deleted data');   
     }
 
     /**
@@ -127,16 +127,16 @@ class ClassesController extends Controller
      */
     public function print() {
         $data = [
-            'classes' => $this->ClassesModel->allData()
+            'lessons' => $this->LessonsModel->allData()
         ];
 
-        $view = \View::make('admin.classes.v_print', $data);
+        $view = \View::make('admin.lessons.v_print', $data);
         $html_content = $view->render();
 
         PDF::SetAuthor('My School');
-        PDF::SetTitle('Class Report');
-        PDF::SetSubject('Class');
-        PDF::SetKeywords('TCPDF, PDF, Class, Report');
+        PDF::SetTitle('Lesson Report');
+        PDF::SetSubject('Lesson');
+        PDF::SetKeywords('TCPDF, PDF, Lesson, Report');
         PDF::SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         PDF::setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         PDF::setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -150,7 +150,7 @@ class ClassesController extends Controller
 
         PDF::SetFont('helvetica', 'B', 20);
         PDF::AddPage();
-        PDF::Write(0, 'Class Report', '', 0, 'C', true, 0, false, false, 0);
+        PDF::Write(0, 'Lesson Report', '', 0, 'C', true, 0, false, false, 0);
         PDF::SetFont('helvetica', '', 15);
         PDF::SetFont('helvetica', '', 10);
 
@@ -167,6 +167,6 @@ class ClassesController extends Controller
 
         PDF::writeHTML($tbl2, true, false, false, false, '');
 
-        PDF::Output(uniqid().'_class_report.pdf');
+        PDF::Output(uniqid().'_lesson_report.pdf');
     }
 }

@@ -9,10 +9,11 @@
 		<li class="menu-header">First Menu</li>
 		<li class="{{request()->is('home') ? 'active' : ''}}"><a class="nav-link" href="/home"><i class="fas fa-fire"></i> <span>Home</span></a></li>
 		<li class="menu-header">Second Menu</li>
-		<li class="nav-item dropdown {{request()->is('classes') ? 'active' : ''}}">
+		<li class="nav-item dropdown {{request()->is('classes', 'classes/create', 'classes/show/*', 'classes/edit/*', 'lessons', 'lessons/create', 'lessons/show/*', 'lessons/edit/*') ? 'active' : ''}}">
 			<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master</span></a>
 			<ul class="dropdown-menu">
-				<li class="{{request()->is('classes') ? 'active' : ''}}"><a class="nav-link" href="/classes">Classes</a></li>
+				<li class="{{request()->is('classes', 'classes/create', 'classes/show/*', 'classes/edit/*') ? 'active' : ''}}"><a class="nav-link" href="/classes">Classes</a></li>
+				<li class="{{request()->is('lessons', 'lessons/create', 'lessons/show/*', 'lessons/edit/*') ? 'active' : ''}}"><a class="nav-link" href="/lessons">Lessons</a></li>
 			</ul>
 		</li>
 	</ul>

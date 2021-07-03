@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\LessonsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,12 @@ Route::post('/classes/insert', [ClassesController::class, 'store']);
 Route::post('/classes/update/{id}', [ClassesController::class, 'update']);
 Route::get('/classes/delete/{id}', [ClassesController::class, 'destroy']);
 Route::get('/classes/print', [ClassesController::class, 'print']);
+
+Route::get('/lessons', [LessonsController::class, 'index'])->name('lessons');
+Route::get('/lessons/create', [LessonsController::class, 'create']);
+Route::get('/lessons/show/{id}', [LessonsController::class, 'show']);
+Route::get('/lessons/edit/{id}', [LessonsController::class, 'edit']);
+Route::post('/lessons/insert', [LessonsController::class, 'store']);
+Route::post('/lessons/update/{id}', [LessonsController::class, 'update']);
+Route::get('/lessons/delete/{id}', [LessonsController::class, 'destroy']);
+Route::get('/lessons/print', [LessonsController::class, 'print']);
