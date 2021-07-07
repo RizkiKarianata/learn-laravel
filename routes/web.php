@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,12 @@ Route::post('/lessons/insert', [LessonsController::class, 'store']);
 Route::post('/lessons/update/{id}', [LessonsController::class, 'update']);
 Route::get('/lessons/delete/{id}', [LessonsController::class, 'destroy']);
 Route::get('/lessons/print', [LessonsController::class, 'print']);
+
+Route::get('/teachers', [TeachersController::class, 'index'])->name('teachers');
+Route::get('/teachers/create', [TeachersController::class, 'create']);
+Route::get('/teachers/show/{id}', [TeachersController::class, 'show']);
+Route::get('/teachers/edit/{id}', [TeachersController::class, 'edit']);
+Route::post('/teachers/insert', [TeachersController::class, 'store']);
+Route::post('/teachers/update/{id}', [TeachersController::class, 'update']);
+Route::get('/teachers/delete/{id}', [TeachersController::class, 'destroy']);
+Route::get('/teachers/print', [TeachersController::class, 'print']);

@@ -12,4 +12,16 @@ class DefaultModel extends Model
     public function getData() {
     	return DB::table('tb_classes')->orderBy('name', 'asc')->get();
     }
+    public function getStudent() {
+    	return DB::table('tb_students')->count();
+    }
+    public function getTeacher() {
+    	return DB::table('tb_teachers')->count();
+    }
+    public function getSchedule() {
+    	return DB::table('tb_schedules')->count();
+    }
+    public function getClass() {
+    	return DB::table('tb_classes')->count();
+    }
 }

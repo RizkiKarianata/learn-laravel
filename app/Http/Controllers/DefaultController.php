@@ -26,7 +26,13 @@ class DefaultController extends Controller
 
 	}
 	public function home() {
-		return view('v_home');
+		$data = [
+			'students' => $this->DefaultModel->getStudent(),
+			'teachers' => $this->DefaultModel->getTeacher(),
+			'schedules' => $this->DefaultModel->getSchedule(),
+			'classes' => $this->DefaultModel->getClass()
+		];
+		return view('v_home', $data);
 	}
 	public function account() {
 		return view('v_account');

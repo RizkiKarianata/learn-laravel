@@ -16,7 +16,7 @@
 						<h4>Students</h4>
 					</div>
 					<div class="card-body">
-						10
+						{{$students}}
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 						<h4>Teachers</h4>
 					</div>
 					<div class="card-body">
-						42
+						{{$teachers}}
 					</div>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 						<h4>Schedules</h4>
 					</div>
 					<div class="card-body">
-						1,201
+						{{$schedules}}
 					</div>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 						<h4>Classes</h4>
 					</div>
 					<div class="card-body">
-						47
+						{{$classes}}
 					</div>
 				</div>
 			</div>
