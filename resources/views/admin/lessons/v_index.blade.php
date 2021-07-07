@@ -19,7 +19,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered table-striped data-tables">
+						<table class="table table-striped data-tables">
 							<thead>
 								<tr>
 									<th>Number</th>

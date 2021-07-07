@@ -5,6 +5,7 @@ use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\SchedulesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,12 @@ Route::post('/teachers/insert', [TeachersController::class, 'store']);
 Route::post('/teachers/update/{id}', [TeachersController::class, 'update']);
 Route::get('/teachers/delete/{id}', [TeachersController::class, 'destroy']);
 Route::get('/teachers/print', [TeachersController::class, 'print']);
+
+Route::get('/schedules', [SchedulesController::class, 'index'])->name('schedules');
+Route::get('/schedules/create', [SchedulesController::class, 'create']);
+Route::get('/schedules/show/{id}', [SchedulesController::class, 'show']);
+Route::get('/schedules/edit/{id}', [SchedulesController::class, 'edit']);
+Route::post('/schedules/insert', [SchedulesController::class, 'store']);
+Route::post('/schedules/update/{id}', [SchedulesController::class, 'update']);
+Route::get('/schedules/delete/{id}', [SchedulesController::class, 'destroy']);
+Route::get('/schedules/print', [SchedulesController::class, 'print']);
