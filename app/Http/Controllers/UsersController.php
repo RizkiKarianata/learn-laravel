@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TeachersModel;
+use App\Models\UsersModel;
 use PDF;
 
-Class TeachersController extends Controller
+Class UsersController extends Controller
 {
     public function __construct() {
-        $this->TeachersModel = new TeachersModel();
+        $this->UsersModel = new UsersModel();
     }
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ Class TeachersController extends Controller
     public function index()
     {
         $data = [
-            'teachers' => $this->TeachersModel->allData()
+            'users' => $this->UsersModel->allData()
         ];
-        return view('admin.teachers.v_index', $data);
+        return view('admin.users.v_index', $data);
     }
 
     /**
@@ -31,7 +31,7 @@ Class TeachersController extends Controller
      */
     public function create()
     {
-        return view('admin.teachers.v_add');
+        return view('admin.users.v_add');
     }
 
     /**
@@ -43,27 +43,20 @@ Class TeachersController extends Controller
     public function store(Request $request)
     {
         Request()->validate([
-            'nip' => 'required|min:12|max:16|unique:tb_teachers,nip',
-            'name' => 'required|min:3|max:100',
-            'phone_number' => 'required|min:11|max:13|unique:tb_teachers,phone_number',
-            'place_birth' => 'required|min:5|max:100',
-            'gender' => 'required',
-            'date_birth' => 'required',
-            'address' => 'required'
+            'username' => 'required|min:4|max:50|unique:tb_users,username',
+            'name' => 'required|min:5|max:100',
+            'password' => 'required|min:4|max:50'
         ]);
         $data = [
-            'nip' => Request()->nip,
+            'username' => Request()->username,
             'name' => Request()->name,
-            'phone_number' => Request()->phone_number,
-            'place_birth' => Request()->place_birth,
-            'gender' => Request()->gender,
-            'date_birth' => Request()->date_birth,
-            'address' => Request()->address,
+            'password' => Request()->password,
+            'level' => "Admin",
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        $this->TeachersModel->addData($data);
-        return redirect()->route('teachers')->with('message', 'Successfully added data');
+        $this->UsersModel->addData($data);
+        return redirect()->route('users')->with('message', 'Successfully added data');
     }
 
     /**
@@ -74,13 +67,13 @@ Class TeachersController extends Controller
      */
     public function show($id)
     {
-        if(!$this->TeachersModel->detailData($id)) {
+        if(!$this->UsersModel->detailData($id)) {
             abort(404);
         }
         $data = [
-            'teachers' => $this->TeachersModel->detailData($id)
+            'users' => $this->UsersModel->detailData($id)
         ];
-        return view('admin.teachers.v_detail', $data);
+        return view('admin.users.v_detail', $data);
     }
 
     /**
@@ -91,13 +84,13 @@ Class TeachersController extends Controller
      */
     public function edit($id)
     {
-        if(!$this->TeachersModel->detailData($id)) {
+        if(!$this->UsersModel->detailData($id)) {
             abort(404);
         }
         $data = [
-            'teachers' => $this->TeachersModel->detailData($id)
+            'users' => $this->UsersModel->detailData($id)
         ];
-        return view('admin.teachers.v_edit', $data);
+        return view('admin.users.v_edit', $data);
     }
 
     /**
@@ -110,26 +103,18 @@ Class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         Request()->validate([
-            'nip' => 'required|min:12|max:16|unique:tb_teachers,nip,'.$id.',id_teachers',
-            'name' => 'required|min:3|max:100',
-            'phone_number' => 'required|min:11|max:13|unique:tb_teachers,phone_number,'.$id.',id_teachers',
-            'place_birth' => 'required|min:5|max:100',
-            'gender' => 'required',
-            'date_birth' => 'required',
-            'address' => 'required'
+            'username' => 'required|min:4|max:50|unique:tb_users,username,'.$id.',id_users',
+            'name' => 'required|min:5|max:100',
+            'password' => 'required|min:4|max:50'
         ]);
         $data = [
-            'nip' => Request()->nip,
+            'username' => Request()->username,
             'name' => Request()->name,
-            'phone_number' => Request()->phone_number,
-            'place_birth' => Request()->place_birth,
-            'gender' => Request()->gender,
-            'date_birth' => Request()->date_birth,
-            'address' => Request()->address,
+            'password' => Request()->password,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        $this->TeachersModel->updateData($id, $data);
-        return redirect()->route('teachers')->with('message', 'Successfully changed data');
+        $this->UsersModel->updateData($id, $data);
+        return redirect()->route('users')->with('message', 'Successfully changed data');
     }
 
     /**
@@ -140,8 +125,8 @@ Class TeachersController extends Controller
      */
     public function destroy($id)
     {
-        $this->TeachersModel->deleteData($id);
-        return redirect()->route('teachers')->with('message', 'Successfully deleted data');   
+        $this->UsersModel->deleteData($id);
+        return redirect()->route('users')->with('message', 'Successfully deleted data');   
     }
 
     /**
@@ -151,16 +136,16 @@ Class TeachersController extends Controller
      */
     public function print() {
         $data = [
-            'teachers' => $this->TeachersModel->allData()
+            'users' => $this->UsersModel->allData()
         ];
 
-        $view = \View::make('admin.teachers.v_print', $data);
+        $view = \View::make('admin.users.v_print', $data);
         $html_content = $view->render();
 
         PDF::SetAuthor('My School');
-        PDF::SetTitle('Teacher Report');
-        PDF::SetSubject('Teacher');
-        PDF::SetKeywords('TCPDF, PDF, Teacher, Report');
+        PDF::SetTitle('Users Report');
+        PDF::SetSubject('Users');
+        PDF::SetKeywords('TCPDF, PDF, Users, Report');
         PDF::SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         PDF::setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         PDF::setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -174,7 +159,7 @@ Class TeachersController extends Controller
 
         PDF::SetFont('helvetica', 'B', 20);
         PDF::AddPage();
-        PDF::Write(0, 'Teacher Report', '', 0, 'C', true, 0, false, false, 0);
+        PDF::Write(0, 'Users Report', '', 0, 'C', true, 0, false, false, 0);
         PDF::SetFont('helvetica', '', 15);
         PDF::SetFont('helvetica', '', 10);
 
@@ -191,6 +176,6 @@ Class TeachersController extends Controller
 
         PDF::writeHTML($tbl2, true, false, false, false, '');
 
-        PDF::Output(uniqid().'_teacher_report.pdf');
+        PDF::Output(uniqid().'_users_report.pdf');
     }
 }

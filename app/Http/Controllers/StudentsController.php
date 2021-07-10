@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentsModel;
+use App\Models\DefaultModel;
+use App\Models\UsersModel;
 use PDF;
 
-class StudentsController extends Controller
+Class StudentsController extends Controller
 {
     public function __construct() {
         $this->StudentsModel = new StudentsModel();
+        $this->DefaultModel = new DefaultModel();
+        $this->UsersModel = new UsersModel();
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +35,10 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('admin.students.v_add');
+        $data = [
+            'classes' => $this->DefaultModel->getData()
+        ];
+        return view('admin.students.v_add', $data);
     }
 
     /**
@@ -43,14 +50,39 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         Request()->validate([
-            'name' => 'required|min:5|max:100'
+            'fk_classes' => 'required',
+            'nis' => 'required|min:4|max:16|unique:tb_students,nis',
+            'name' => 'required|min:5|max:100',
+            'phone_number' => 'required|min:11|max:20|unique:tb_students,phone_number',
+            'email_address' => 'required|min:5|max:50|unique:tb_students,email_address',
+            'place_birth' => 'required|min:5|max:100',
+            'gender' => 'required',
+            'date_birth' => 'required',
+            'address' => 'required'
         ]);
         $data = [
+            'fk_classes' => Request()->fk_classes,
+            'nis' => Request()->nis,
             'name' => Request()->name,
+            'phone_number' => Request()->phone_number,
+            'email_address' => Request()->email_address,
+            'place_birth' => Request()->place_birth,
+            'gender' => Request()->gender,
+            'date_birth' => Request()->date_birth,
+            'address' => Request()->address,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $data_users = [
+            'username' => Request()->nis,
+            'name' => Request()->name,
+            'password' => Request()->nis,
+            'level' => "Student",
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $this->StudentsModel->addData($data);
+        $this->UsersModel->addData($data_users);
         return redirect()->route('students')->with('message', 'Successfully added data');
     }
 
@@ -83,7 +115,8 @@ class StudentsController extends Controller
             abort(404);
         }
         $data = [
-            'students' => $this->StudentsModel->detailData($id)
+            'students' => $this->StudentsModel->detailData($id),
+            'classes' => $this->DefaultModel->getData()
         ];
         return view('admin.students.v_edit', $data);
     }
@@ -98,13 +131,36 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         Request()->validate([
-            'name' => 'required|min:5|max:100'
+            'fk_classes' => 'required',
+            'nis' => 'required|min:4|max:16|unique:tb_students,nis,'.$id.',id_students',
+            'name' => 'required|min:5|max:100',
+            'phone_number' => 'required|min:11|max:20|unique:tb_students,phone_number,'.$id.',id_students',
+            'email_address' => 'required|min:5|max:50|unique:tb_students,email_address,'.$id.',id_students',
+            'place_birth' => 'required|min:5|max:100',
+            'gender' => 'required',
+            'date_birth' => 'required',
+            'address' => 'required'
         ]);
         $data = [
+            'fk_classes' => Request()->fk_classes,
+            'nis' => Request()->nis,
             'name' => Request()->name,
+            'phone_number' => Request()->phone_number,
+            'email_address' => Request()->email_address,
+            'place_birth' => Request()->place_birth,
+            'gender' => Request()->gender,
+            'date_birth' => Request()->date_birth,
+            'address' => Request()->address,
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $data_users = [
+            'username' => Request()->nis,
+            'name' => Request()->name,
+            'password' => Request()->nis,
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $this->StudentsModel->updateData($id, $data);
+        $this->UsersModel->updateData2(Request()->old_nis, $data_users);
         return redirect()->route('students')->with('message', 'Successfully changed data');
     }
 
@@ -117,6 +173,7 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         $this->StudentsModel->deleteData($id);
+        $this->UsersModel->deleteData2($id);
         return redirect()->route('students')->with('message', 'Successfully deleted data');   
     }
 
@@ -134,9 +191,9 @@ class StudentsController extends Controller
         $html_content = $view->render();
 
         PDF::SetAuthor('My School');
-        PDF::SetTitle('Class Report');
-        PDF::SetSubject('Class');
-        PDF::SetKeywords('TCPDF, PDF, Class, Report');
+        PDF::SetTitle('Student Report');
+        PDF::SetSubject('Student');
+        PDF::SetKeywords('TCPDF, PDF, Student, Report');
         PDF::SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         PDF::setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         PDF::setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -150,7 +207,7 @@ class StudentsController extends Controller
 
         PDF::SetFont('helvetica', 'B', 20);
         PDF::AddPage();
-        PDF::Write(0, 'Class Report', '', 0, 'C', true, 0, false, false, 0);
+        PDF::Write(0, 'Student Report', '', 0, 'C', true, 0, false, false, 0);
         PDF::SetFont('helvetica', '', 15);
         PDF::SetFont('helvetica', '', 10);
 
@@ -167,6 +224,6 @@ class StudentsController extends Controller
 
         PDF::writeHTML($tbl2, true, false, false, false, '');
 
-        PDF::Output(uniqid().'_class_report.pdf');
+        PDF::Output(uniqid().'_student_report.pdf');
     }
 }

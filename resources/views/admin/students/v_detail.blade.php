@@ -1,9 +1,9 @@
 @extends('layout.v_template')
-@section('title', 'Classes Detail Page')
+@section('title', 'Students Detail Page')
 @section('content')
 <section class="section">
 	<div class="section-header">
-		<h1>Classes Detail</h1>
+		<h1>Students Detail</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -13,13 +13,45 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr>
+									<th>Class</th>
+									<td>{{$students->classesName}}</td>
+								</tr>
+								<tr>
+									<th>NIS</th>
+									<td>{{$students->nis}}</td>
+								</tr>
+								<tr>
 									<th>Name</th>
-									<td>{{$classes->name}}</td>
+									<td>{{$students->name}}</td>
+								</tr>
+								<tr>
+									<th>Phone Number</th>
+									<td>{{$students->phone_number}}</td>
+								</tr>
+								<tr>
+									<th>Email Address</th>
+									<td>{{$students->email_address}}</td>
+								</tr>
+								<tr>
+									<th>Place Of Birth</th>
+									<td>{{$students->place_birth}}</td>
+								</tr>
+								<tr>
+									<th>Gender</th>
+									<td>{{$students->gender}}</td>
+								</tr>
+								<tr>
+									<th>Date Of Birth</th>
+									<td>{{$students->date_birth}}</td>
+								</tr>
+								<tr>
+									<th>Address</th>
+									<td>{{$students->address}}</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<a href="/classes" class="btn btn-danger">Back</a>
+					<a href="/students" class="btn btn-danger">Back</a>
 				</div>
 			</div>
 		</div>

@@ -24,6 +24,7 @@
 								<tr>
 									<th>Number</th>
 									<th>NIS</th>
+									<th>Class</th>
 									<th>Name</th>
 									<th>Phone Number</th>
 									<th>Aksi</th>
@@ -35,12 +36,13 @@
 								<tr>
 									<td>{{$no++}}</td>
 									<td>{{$data->nis}}</td>
+									<td>{{$data->classesName}}</td>
 									<td>{{$data->name}}</td>
 									<td>{{$data->phone_number}}</td>
 									<td>
 										<a href="/students/show/{{$data->id_students}}" class="btn btn-success"><i class="fas fa-eye"></i></a>
 										<a href="/students/edit/{{$data->id_students}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-										<a href="/students/delete/{{$data->id_students}}" onclick="return confirm('Are you sure you want to delete the data?')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+										<a href="/students/delete/{{$data->nis}}" onclick="return confirm('Are you sure you want to delete the data?')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
 									</td>
 								</tr>
 								@endforeach()
