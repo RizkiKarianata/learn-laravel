@@ -1,5 +1,5 @@
 @extends('layout.v_template')
-@section('title', 'Home Page')
+@section('title', 'Account Page')
 @section('content')
 <section class="section">
 	<div class="section-header">
@@ -64,10 +64,11 @@
 							<div class="card-footer text-right">
 								<input type="submit" name="submit" class="btn btn-primary" value="Save">
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</section>
-	@endsection()
+	</div>
+</section>
+@endsection()

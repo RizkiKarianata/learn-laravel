@@ -4,6 +4,11 @@
 <section class="section">
 	<div class="section-header">
 		<h1>Classes Edit</h1>
+		<div class="section-header-breadcrumb">
+			<div class="breadcrumb-item active"><a href="/home">Home</a></div>
+			<div class="breadcrumb-item active"><a href="/classes">Classes</a></div>
+			<div class="breadcrumb-item">Classes Edit</div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
