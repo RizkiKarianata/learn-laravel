@@ -25,10 +25,6 @@
 									<th>Username</th>
 									<td>{{$users->username}}</td>
 								</tr>
-								<tr>
-									<th>Password</th>
-									<td>{{$users->password}}</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>

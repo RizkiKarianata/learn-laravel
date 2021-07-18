@@ -25,7 +25,7 @@
 								<h4>My School</h4>
 							</div>
 							<div class="card-body">
-								<form method="POST" action="">
+								<form method="POST" action="{{ route('login') }}">
 									@csrf
 									<div class="form-group">
 										<label for="username">{{ __('Username') }}</label>
@@ -39,9 +39,9 @@
 									<div class="form-group">
 										<div class="d-block">
 											<label for="password" class="control-label">{{ __('Password') }}</label>
-											<div class="float-right">
+											{{-- <div class="float-right">
 												<a href="/reset" class="text-small">{{ __('Reset Password')}}</a>
-											</div>
+											</div> --}}
 										</div>
 										<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" autocomplete="current-password" placeholder="{{ __('Your Password')}}">
 										@error('password')
@@ -57,9 +57,9 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<a href="/home" class="btn btn-primary btn-lg btn-block">
+										<button type="submit" class="btn btn-primary btn-lg btn-block">
 											{{ __('Login') }}
-										</a>
+										</button>
 									</div>
 									<div class="mt-5 text-muted text-center">
 										Don't have an account? <a href="/register">{{ __('Create One')}}</a>

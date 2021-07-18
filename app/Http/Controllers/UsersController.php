@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 Class UsersController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->UsersModel = new UsersModel();
     }
     /**
@@ -50,7 +52,7 @@ Class UsersController extends Controller
         $data = [
             'username' => Request()->username,
             'name' => Request()->name,
-            'password' => Request()->password,
+            'password' => Hash::make(Request()->password),
             'level' => "Admin",
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -104,13 +106,11 @@ Class UsersController extends Controller
     {
         Request()->validate([
             'username' => 'required|min:4|max:50|unique:tb_users,username,'.$id.',id_users',
-            'name' => 'required|min:5|max:100',
-            'password' => 'required|min:4|max:50'
+            'name' => 'required|min:5|max:100'
         ]);
         $data = [
             'username' => Request()->username,
             'name' => Request()->name,
-            'password' => Request()->password,
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $this->UsersModel->updateData($id, $data);

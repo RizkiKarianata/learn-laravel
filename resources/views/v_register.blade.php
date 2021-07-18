@@ -25,15 +25,15 @@
 					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
 						<div class="card card-primary">
 							<div class="card-header">
-								<h4>{{ __('Register') }}</h4>
+								<h4>Register</h4>
 							</div>
 							<div class="card-body">
-								<form method="POST" action="" enctype="multipart/form-data">
+								<form method="POST" action="/default/insert" enctype="multipart/form-data">
 									@csrf
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="nis">{{ __('NIS') }}</label>
+												<label for="nis">NIS</label>
 												<input type="number" name="nis" id="nis" class="form-control @error('nis') is-invalid @enderror" placeholder="{{ __('Your NIS') }}" autocomplete="off" autofocus="" value="{{ old('nis') }}">
 												@error('nis')
 												<div class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="name">{{ __('Name') }}</label>
+												<label for="name">Name</label>
 												<input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Your Name') }}" autocomplete="off" autofocus="" value="{{ old('name') }}">
 												@error('name')
 												<div class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="fk_classes">{{ __('Class') }}</label>
+												<label for="fk_classes">Class</label>
 												<select class="form-control select2 @error('fk_classes') is-invalid @enderror" name="fk_classes" id="fk_classes">
 													<option value="">Choose Class</option>
 													@foreach($classes as $data)
@@ -71,9 +71,9 @@
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="username">{{ __('Username') }}</label>
-												<input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" autofocus="" autocomplete="off" placeholder="{{ __('Your Username')}}" value="{{ old('username') }}">
-												@error('username')
+												<label for="phone_number">Phone Number</label>
+												<input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" autofocus="" autocomplete="off" placeholder="{{ __('Your Phone Number')}}" value="{{ old('phone_number') }}">
+												@error('phone_number')
 												<div class="invalid-feedback" role="alert">
 													<strong>{{ $message }}</strong>
 												</div>
@@ -82,9 +82,9 @@
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="password">{{ __('Password') }}</label>
-												<input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Your Password') }}" autocomplete="new-password" autofocus="">
-												@error('password')
+												<label for="email_address">Email Address</label>
+												<input type="email" name="email_address" id="email_address" class="form-control @error('email_address') is-invalid @enderror" placeholder="{{ __('Your Email Address') }}" autocomplete="off" autofocus="" value="{{ old('email') }}">
+												@error('email_address')
 												<div class="invalid-feedback" role="alert">
 													<strong>{{ $message }}</strong>
 												</div>
@@ -94,11 +94,11 @@
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-lg btn-block">
-											{{ __('Register') }}
+											Register
 										</button>
 									</div>
 									<div class="mt-5 text-muted text-center">
-										Do you have an account? <a href="/">{{ __('Login')}}<a>
+										Do you have an account? <a href="/">Login<a>
 										</div>
 									</form>
 								</div>

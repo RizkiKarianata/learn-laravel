@@ -31,11 +31,11 @@
 									{{ session('status') }}
 								</div>
 								@endif
-								<form method="POST" action="" enctype="multipart/form-data">
+								<form method="POST" action="{{ route('password.email') }}" enctype="multipart/form-data">
 									@csrf
 									<div class="form-group">
-										<label for="email">{{ __('E-Mail Address') }}</label>
-										<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" tabindex="1" autofocus="">
+										<label for="email">EMail Address</label>
+										<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" tabindex="1" autofocus="" placeholder="Your Email Address">
 										@error('email')
 										<div class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>

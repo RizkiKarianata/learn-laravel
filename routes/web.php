@@ -20,11 +20,13 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', [DefaultController::class, 'login']);
+Route::get('/', [DefaultController::class, 'login'])->name('/');
 Route::get('/register', [DefaultController::class, 'register']);
 Route::get('/reset', [DefaultController::class, 'reset']);
-Route::get('/home', [DefaultController::class, 'home']);
-Route::get('/account', [DefaultController::class, 'account']);
+Route::get('/home', [DefaultController::class, 'home'])->name('home');
+Route::get('/account', [DefaultController::class, 'account'])->name('account');
+Route::post('/default/insert', [DefaultController::class, 'students_store']);
+Route::post('/default/update_account/{id}', [DefaultController::class, 'account_update']);
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::get('/classes/create', [ClassesController::class, 'create']);
@@ -79,3 +81,6 @@ Route::post('/users/insert', [UsersController::class, 'store']);
 Route::post('/users/update/{id}', [UsersController::class, 'update']);
 Route::get('/users/delete/{id}', [UsersController::class, 'destroy']);
 Route::get('/users/print', [UsersController::class, 'print']);
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

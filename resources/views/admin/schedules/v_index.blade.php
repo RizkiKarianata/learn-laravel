@@ -15,6 +15,7 @@
 			<div class="alert alert-success">{{session('message')}}</div>
 		</div>
 		@endif
+		@if(Auth::user()->level == "Admin")
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header" style="white-space: nowrap;">
@@ -58,6 +59,48 @@
 				</div>
 			</div>
 		</div>
+		@endif;
+		@if(Auth::user()->level == "Student")
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					@foreach($schedules_2 as $data)
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<td>Day</td>
+									<td>:</td>
+									<td>{{$data->day}}</td>
+								</tr>
+								<tr>
+									<td>Start Time</td>
+									<td>:</td>
+									<td>{{$data->start_time}}</td>
+								</tr>
+								<tr>
+									<td>Expiry Time</td>
+									<td>:</td>
+									<td>{{$data->expiry_time}}</td>
+								</tr>
+								<tr>
+									<td>Lessons</td>
+									<td>:</td>
+									<td>{{$data->lessonsName}}</td>
+								</tr>
+								<tr>
+									<td>Teachers</td>
+									<td>:</td>
+									<td>{{$data->classesName}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					@endforeach()
+				</div>
+			</div>
+		</div>
+		@endif;
 	</div>
 </section>
 @endsection()

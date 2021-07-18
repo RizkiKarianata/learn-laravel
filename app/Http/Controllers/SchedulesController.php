@@ -7,11 +7,13 @@ use App\Models\SchedulesModel;
 use App\Models\ClassesModel;
 use App\Models\LessonsModel;
 use App\Models\TeachersModel;
+use Auth;
 use PDF;
 
 class SchedulesController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->SchedulesModel = new SchedulesModel();
         $this->ClassesModel = new ClassesModel();
         $this->LessonsModel = new LessonsModel();
@@ -24,8 +26,14 @@ class SchedulesController extends Controller
      */
     public function index()
     {
+        $username = Auth::user()->username;
+        if(Auth::user()->level == "Student") {
+            $getData = $this->SchedulesModel->getDataStudent($username);
+        }
+        $fk_classes = $getData[0]->fk_classes;
         $data = [
-            'schedules' => $this->SchedulesModel->allData()
+            'schedules' => $this->SchedulesModel->allData(),
+            'schedules_2' => $this->SchedulesModel->allData_2($fk_classes)
         ];
         return view('admin.schedules.v_index', $data);
     }

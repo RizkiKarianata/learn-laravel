@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\StudentsModel;
 use App\Models\DefaultModel;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 Class StudentsController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->StudentsModel = new StudentsModel();
         $this->DefaultModel = new DefaultModel();
         $this->UsersModel = new UsersModel();
@@ -76,7 +78,7 @@ Class StudentsController extends Controller
         $data_users = [
             'username' => Request()->nis,
             'name' => Request()->name,
-            'password' => Request()->nis,
+            'password' => Hash::make(Request()->nis),
             'level' => "Student",
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -156,7 +158,7 @@ Class StudentsController extends Controller
         $data_users = [
             'username' => Request()->nis,
             'name' => Request()->name,
-            'password' => Request()->nis,
+            'password' => Hash::make(Request()->nis),
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $this->StudentsModel->updateData($id, $data);

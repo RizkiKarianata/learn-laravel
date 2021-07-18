@@ -24,4 +24,16 @@ class DefaultModel extends Model
     public function getClass() {
     	return DB::table('tb_classes')->count();
     }
+    public function addDataStudent($data) {
+        return DB::table('tb_students')->insert($data);
+    }
+    public function addDataUser($data) {
+        return DB::table('tb_users')->insert($data);
+    }
+    public function updateDataStudent($id, $data) {
+        return DB::table('tb_students')->where('nis', $id)->update($data);
+    }
+    public function updateDataUser($id, $data) {
+        return DB::table('tb_users')->where('username', $id)->update($data);
+    }
 }

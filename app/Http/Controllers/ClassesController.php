@@ -9,6 +9,7 @@ use PDF;
 class ClassesController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->ClassesModel = new ClassesModel();
     }
     /**
