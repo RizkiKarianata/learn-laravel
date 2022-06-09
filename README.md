@@ -2,7 +2,7 @@
 
 ![Learn Laravel](https://user-images.githubusercontent.com/52366240/172872997-a02b7194-b915-4b6c-bb4b-20b1aa2aed88.png)
 
-<p align="center">Learn Laravel is a PHP micro framework template using the modified Slim Framework. Learn Laravel helps you to speed up writing web applications (Code) and simple yet powerful APIs. Built using the Slim Framework. 💖 </p>
+<p align="center">A simple application that is used for managing school data such as teacher, student data, and others. Built using Laravel Framework. 💖 </p>
 
 <p align="center">
 <img src="https://img.shields.io/github/contributors/RizkiKarianata/learn-laravel?style=flat-square">
