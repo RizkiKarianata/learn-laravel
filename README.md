@@ -1,62 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1 align="center">Welcome to Learn Laravel! 👋 </h1>
+
+![Learn Laravel](https://user-images.githubusercontent.com/52366240/172872997-a02b7194-b915-4b6c-bb4b-20b1aa2aed88.png)
+
+<p align="center">Learn Laravel is a PHP micro framework template using the modified Slim Framework. Learn Laravel helps you to speed up writing web applications (Code) and simple yet powerful APIs. Built using the Slim Framework. 💖 </p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img src="https://img.shields.io/github/contributors/RizkiKarianata/learn-laravel?style=flat-square">
+<img src="https://img.shields.io/github/issues/RizkiKarianata/learn-laravel?style=flat-square">
+<img src="https://img.shields.io/github/stars/RizkiKarianata/learn-laravel?style=flat-square"> 
+<img src="https://img.shields.io/github/forks/RizkiKarianata/learn-laravel?style=flat-square">
+<img src="https://img.shields.io/github/last-commit/RizkiKarianata/learn-laravel.svg?style=flat-square">
+<img src="https://img.shields.io/github/languages/code-size/RizkiKarianata/learn-laravel?style=flat-square">
+<img src="https://img.shields.io/github/license/RizkiKarianata/learn-laravel?style=flat-square">
 </p>
 
-## About Laravel
+<p align="center">
+<a href="https://karianata.com/learn-laravel/demo">Demo Page</a>&nbsp;&nbsp;&nbsp;
+<a href="https://karianata.com/learn-laravel/docs">Documentation Page</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 💾 Requirements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* `Web Server` - used to manage the entire application development process. Example [Xampp, Lampp, Mamp] and using PHP version 7.4 or higher
+* `Web Browser` - can be used as a testing API to build applications. Example [Chrome, Firefox, Safari & Opera]
+* `Internet` - because many use CDN and to make it easier to find solutions to all problems
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🎯 How To Use
 
-## Learning Laravel
+#### Using the built-in ready to use from the release (Recommended)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Download the latest project release from the [Release Page](https://github.com/RizkiKarianata/learn-laravel "Release Page"). To explore the source code you can use a text editor such as Visual Studio Code.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Build manually
 
-## Laravel Sponsors
+* Before starting, make sure you have Composer installed first
+* If you have installed Composer. Run the command git clone which is `https://github.com/RizkiKarianata/learn-laravel`
+* To run the app you can access the command. Example **php artisan serve**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 📆 Release Date
 
-### Premium Partners
+* v1.0.0 : 09 June 2022
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+## 🧑 Author
 
-## Contributing
+* Facebook : <a href="https://www.facebook.com/rizky.slankers.3386"> Rizki Karianata</a>
+* Instagram : <a href="https://www.instagram.com/rizkikarianata"> @rizkikarianata</a>
+* Youtube : <a href="https://www.youtube.com/channel/UCwhkJwsq6swJrerdP0tixJA"> @rizkikarianata</a>
+* LinkedIn :  <a href="https://www.linkedin.com/in/rizkikarianata"> @rizkikarianata</a>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📝 License
 
-## Code of Conduct
+* Copyright © 2020 Rizki Karianata
+* **Learn Laravel is an open source project licensed under the MIT license**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## ☕️ Suppport & Donation
 
-## Security Vulnerabilities
+Love Learn Laravel? Support this project by donating or sharing with others in need.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<a href="https://www.buymeacoffee.com/rizkikarianata"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"/> </a>
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Made with ❤️ Rizki Karianata**
